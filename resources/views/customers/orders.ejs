@@ -1,0 +1,56 @@
+<section class="orders light-section" id="order_page">
+  <div class="container mx-auto pt-12">
+      <h1 class="font-bold text-lg mb-4">All Orders</h1>
+      <% if(messages.success) {%>
+      <div id="success-alert" class="flex item-center bg-green-500 text-white text-sm font-bold px-4 py-2" role="alert">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          <p><%=  messages.success%></p>
+      </div>
+      <% } %>
+      <table class="w-full table-auto bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 text-left">Orders</th>
+                    <th class="px-4 py-2 text-left">Address</th>
+                    <th class="px-4 py-2 text-left">Phone</th>
+                    <th class="px-4 py-2 text-left">Time</th>
+                    <th class="px-4 py-2 text-left">Payment</th>
+                </tr>
+                <tbody>
+                    <% if(orders.length) { %>
+
+                        <% orders.forEach((order)=>{ %>
+                            <tr>
+                                <td class="border px-4 py-2">
+                                    <a class="link" href="/customer/orders/<%= order._id %>"><%= order._id%></a>
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <%= order.address %>
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <%= order.phone %>
+                                </td>
+                                <td class="border px-4 py-2">
+                                     <%= moment(order.createdAt).format('hh:mm A') %>
+                                </td>
+                                <td class="border px-4 py-2">
+                                    <%= order.paymentType %>
+                               </td>
+                                
+                            </tr>
+                      <%  }) %>
+                   
+                    <% } else { %>
+                                <tr>
+                                    <td class="p-4">No Orders Found!</td>
+                                </tr>
+
+                        <% } %>
+                </tbody>
+            </thead>
+      </table>
+  </div>
+</section>
+

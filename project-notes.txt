@@ -1,0 +1,10 @@
+ //old way
+ //"watch": "npm run development -- --watch"
+
+//new way -> mene yaha scripts me chnages kar diye hai jab me me "yarn watch" ka command dunga "npx mix"
+ run ho jayega.
+ "watch": "npx mix"
+
+everything completed with customers dashboard and admin dashboard and  payment gateway intigrated successfully.
+
+this is project is now ready for deployemnt on server
